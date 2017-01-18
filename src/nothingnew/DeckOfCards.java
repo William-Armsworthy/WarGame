@@ -1,8 +1,6 @@
 package nothingnew;
 
 
-
-import nothingnew.Card;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -13,9 +11,9 @@ public class DeckOfCards {
     {
         deck = new ArrayList<>();
         
-        String[] suits = {"hearts","diamonds","spades","clubs"};
+        String[] suits = {"spades","hearts","clubs","diamonds"};
         String[] faceNames = {"two","three","four","five","six","seven","eight",
-                              "nine","ten","jack","queen","king","ace"};
+                              "nine","ten","Jack","Queen","King","Ace"};
         
         for (String suit : suits)
         {
@@ -28,38 +26,32 @@ public class DeckOfCards {
     }
     
     /**
-     * This will return a String representing the deck of cards
-     */
-    @Override
-    public String toString()
-    {
-        String deckString = "";
-        
-        for (Card card : deck)
-        {
-            deckString += card.toString() + "\n";
-        }
-        
-        return deckString;
-    }
-    
-    /**
-     * This method will "shuffle" the deck of cards
+     * This shuffles the deck of cards
      */
     public void shuffle()
     {
         Collections.shuffle(deck);
     }
     
-    /**
-     * This method will deal the top card off the deck
-     */
     public Card dealTopCard()
     {
-        if (deck.isEmpty())
-            return null;
-        else
+        if (deck.size()>0)
             return deck.remove(0);
+        else
+            return null;
     }
-            
+    
+    }
+    
+    @Override
+    public String toString()
+    {
+        String deckString="";
+        for (Card card : deck)
+        {
+            deckString += card.toString() + "\n";
+        }
+        return deckString;
+    }
+
 }
